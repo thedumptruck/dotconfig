@@ -71,3 +71,8 @@ mods = "Command"
 chars = "\u001e"
 key = "6"
 mods = "Control"
+
+[[keyboard.bindings]]
+action = "ToggleViMode"
+key = "Space"
+mods = "Command|Shift"
