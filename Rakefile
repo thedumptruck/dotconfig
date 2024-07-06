@@ -21,14 +21,14 @@ def asdf(package)
   sh "asdf global #{package} latest"
 end
 
-def backup_config(from, to)
+def config_exists?(from, to)
   backup = File.expand_path("#{Dir.pwd}/.orig")
 
   return unless File.exist?(to) || File.symlink?(to)
 
   if File.symlink?(to)
     link_from = File.readlink(to)
-    return if link_from == from
+    return true if link_from == from
 
     rm to
   else
@@ -40,7 +40,8 @@ end
 def link_config(name, config_dir = '.config')
   from = File.expand_path("#{Dir.pwd}/#{name}")
   to = File.expand_path("~/#{config_dir}/#{name}")
-  backup_config from, to
+  return if config_exists? from, to
+
   ln_s from, to, verbose: true
 end
 
@@ -73,6 +74,9 @@ task :brew do
 
   step 'Install tmux'
   brew 'tmux'
+
+  step 'Install zplug'
+  brew 'zplug'
 end
 
 task :asdf do
@@ -81,6 +85,17 @@ task :asdf do
   asdf 'ruby'
   asdf 'nodejs'
   asdf 'rust'
+end
+
+task :install do
+  step 'Linking config'
+  link_config 'alacritty'
+  link_config 'lsd'
+  link_config 'zsh'
+  link_config 'lvim'
+  link_config 'tmux'
+  link_config 'starship'
+  link_config '.zshrc', '.'
 end
 
 task :default do
@@ -100,11 +115,5 @@ task :default do
   sh 'rm -rf ~/.local/share/lunarvim.old'
   sh 'rm -rf ~/.cache/lvim.old'
 
-  step 'Linking config'
-  link_config 'alacritty'
-  link_config 'lsd'
-  link_config 'zsh'
-  link_config 'lvim'
-  link_config 'tmux'
-  link_config '.zshrc', '.'
+  Rake::Task['install'].invoke
 end
