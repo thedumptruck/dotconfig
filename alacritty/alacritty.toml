@@ -1,5 +1,5 @@
 import = [
-  "~/.config/alacritty/theme/themes/nordic.toml"
+  "~/.config/alacritty/theme/themes/nord.toml"
 ]
 
 [window]
