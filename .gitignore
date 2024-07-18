@@ -1,5 +1,7 @@
 .tmp
 .orig
 .DS_Store
-tmux/plugins/
-!tmux/plugins/tpm
+tmux/dot-config/tmux/plugins/
+!tmux/dot-config/tmux/plugins/tpm
+**/*.local.*
+nvimcommon/starter
