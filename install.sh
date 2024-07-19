@@ -33,7 +33,7 @@ for file in install/app/*; do
       _install "$title" $app_name
     fi
 
-    _configure $config_name
+    [[ ! -z $config_name ]] && _configure $config_name
     ;;
   esac
 done

@@ -8,3 +8,4 @@ export ZCONFIG_HOME=~/.config/zsh/
 
 
 eval "$(starship init zsh)"
+source <(fzf --zsh)
