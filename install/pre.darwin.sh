@@ -10,17 +10,15 @@ if ! _is_cmd_installed brew; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-
 if ! _is_cmd_installed gum; then
-  _install "Gum" gum > /dev/null
+  brew install gum >/dev/null
 fi
 
 if ! _is_cmd_installed git; then
   _install "Git" git
 fi
 
-if ! _is_cmd_installed stow; then 
+if ! _is_cmd_installed stow; then
   _install GNU/Stow stow
   _configure stow
 fi
-

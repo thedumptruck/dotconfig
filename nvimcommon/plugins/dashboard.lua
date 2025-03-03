@@ -21,6 +21,16 @@ local M = {
 	{ "goolord/alpha-nvim", enabled = false },
 	{ "echasnovski/mini.starter", enabled = false },
 	{
+		"folke/snacks.nvim",
+		opts = {
+			dashboard = {
+				preset = {
+					header = table.concat(Logo, "\n"),
+				},
+			},
+		},
+	},
+	{
 		"nvimdev/dashboard-nvim",
 		enabled = true,
 		lazy = false,
