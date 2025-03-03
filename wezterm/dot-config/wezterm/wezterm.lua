@@ -26,7 +26,7 @@ M.default_prog = {
 	"-A",
 	"-D",
 	"-s",
-	"main",
+	"terminal",
 }
 
 M.keys = {

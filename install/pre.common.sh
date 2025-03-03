@@ -3,7 +3,7 @@ set -e
 APP_HOME=$(realpath ~)
 
 _is_cmd_installed() {
-  command -v $1 > /dev/null 2>&1
+  command -v $1 >/dev/null 2>&1
 }
 
 _configure() {
@@ -15,4 +15,3 @@ _configure() {
   stow -v -R --dotfiles -t $APP_HOME $1
 }
 _configure lsd
-
